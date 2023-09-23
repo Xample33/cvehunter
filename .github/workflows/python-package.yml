@@ -39,9 +39,6 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         
-    - name: Set Python Path
-      run: echo "::add-path::/home/runner/work/cvehunter/cvehunter"  # Adjust the path as needed
-        
     - name: Test with pytest
       run: |
         pytest
