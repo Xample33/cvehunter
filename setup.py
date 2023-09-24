@@ -10,5 +10,9 @@ setup(
     author = "Xample33",
     license = "MIT",
     url = "https://github.com/Xample33/cvehunter",
-    long_description=read('README.md')
+    long_description=read('README.md'),
+    install_requires=[
+        "httpx",
+        "urllib3",
+    ],
 )

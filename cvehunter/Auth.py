@@ -5,7 +5,7 @@ from .Cwe import Cwe
 from urllib3.exceptions import InsecureRequestWarning
 from urllib3 import disable_warnings
 import json
-import utils as u
+from cvehunter import utils as u
 import httpx
 from httpx import HTTPStatusError
 from datetime import datetime, timezone
@@ -98,7 +98,7 @@ class Auth:
         api_url = f"https://www.opencve.io/api/cwe/{cwe_id}"
         raw_data = await self.make_request(api_url)
         
-        if not raw_data:
+        if raw_data is None:
             return None
         
         json_data = json.loads(raw_data)
