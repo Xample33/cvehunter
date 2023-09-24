@@ -5,7 +5,7 @@ from .Cwe import Cwe
 from urllib3.exceptions import InsecureRequestWarning
 from urllib3 import disable_warnings
 import json
-import utils as u
+from cvehunter import utils as u
 import httpx
 from httpx import HTTPStatusError
 from datetime import datetime, timezone
