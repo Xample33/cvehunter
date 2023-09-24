@@ -1,0 +1,2 @@
+httpx
+urllib3
