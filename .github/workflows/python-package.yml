@@ -13,6 +13,9 @@ jobs:
   test:
     name: Test on ${{ matrix.os }} with py ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
+    env:
+      OPENCVE_USERNAME: ${{ secrets.OPENCVE_USERNAME }}
+      OPENCVE_PASSWORD: ${{ secrets.OPENCVE_PASSWORD }}
     strategy:
       fail-fast: false
       matrix:
