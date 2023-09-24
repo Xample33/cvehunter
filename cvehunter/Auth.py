@@ -98,7 +98,7 @@ class Auth:
         api_url = f"https://www.opencve.io/api/cwe/{cwe_id}"
         raw_data = await self.make_request(api_url)
         
-        if not raw_data:
+        if raw_data is None:
             return None
         
         json_data = json.loads(raw_data)
