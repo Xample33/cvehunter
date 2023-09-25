@@ -1,37 +1,36 @@
 import pytest
 import os
-import asyncio
-from cvehunter.Auth import Auth
+import cvehunter.cvehunter as cvehunter
 
 @pytest.mark.asyncio
 async def test_auth_correct():
     username = os.environ.get("OPENCVE_USERNAME")
     password = os.environ.get("OPENCVE_PASSWORD")
-    auth = Auth(username, password)
-    return auth
+    ch = await cvehunter.connect(username, password)
+    return ch
 
 @pytest.mark.asyncio
 async def test_auth_wrong():
-    auth = Auth('wrong', 'wrong')
-    assert auth is not None
+    ch = await cvehunter.connect('wrong', 'wrong')
+    assert ch is not None
 
 @pytest.mark.asyncio
 async def test_cve_correct():
     username = os.environ.get("OPENCVE_USERNAME")
     password = os.environ.get("OPENCVE_PASSWORD")
-    auth = Auth(username, password)
+    ch = await cvehunter.connect(username, password)
     
-    cve = await auth.search_cve("CVE-2023-41991")
+    cve = await ch.search_cve("CVE-2023-41991")
     assert cve is not None
 
 @pytest.mark.asyncio
 async def test_cve_wrong_year():
     username = os.environ.get("OPENCVE_USERNAME")
     password = os.environ.get("OPENCVE_PASSWORD")
-    auth = Auth(username, password)
+    ch = await cvehunter.connect(username, password)
     
     with pytest.raises(ValueError) as exc_info:
-        await auth.search_cve("CVE-2024-41991")
+        await ch.search_cve("CVE-2024-41991")
 
     assert str(exc_info.value) == "CVE ID year cannot be greater than current year"
     
@@ -39,10 +38,10 @@ async def test_cve_wrong_year():
 async def test_cve_wrong_id():
     username = os.environ.get("OPENCVE_USERNAME")
     password = os.environ.get("OPENCVE_PASSWORD")
-    auth = Auth(username, password)
+    ch = await cvehunter.connect(username, password)
     
     with pytest.raises(ValueError) as exc_info:
-        await auth.search_cve("CVE-ssss-41991")
+        await ch.search_cve("CVE-ssss-41991")
         
     assert str(exc_info.value) ==("CVE ID must be in the format CVE-YYYY-NNNN")
 
@@ -50,16 +49,16 @@ async def test_cve_wrong_id():
 async def test_cwe_correct():
     username = os.environ.get("OPENCVE_USERNAME")
     password = os.environ.get("OPENCVE_PASSWORD")
-    auth = Auth(username, password)
+    ch = await cvehunter.connect(username, password)
     
-    cwe = await auth.search_cwe("CWE-79")
+    cwe = await ch.search_cwe("CWE-79")
     assert cwe is not None
 
 @pytest.mark.asyncio
 async def test_cwe_wrong():
     username = os.environ.get("OPENCVE_USERNAME")
     password = os.environ.get("OPENCVE_PASSWORD")
-    auth = Auth(username, password)
+    ch = await cvehunter.connect(username, password)
     
-    cwe = await auth.search_cwe("CWE-99999")
+    cwe = await ch.search_cwe("CWE-99999")
     assert cwe is None
