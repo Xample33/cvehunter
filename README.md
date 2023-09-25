@@ -38,7 +38,7 @@ Output:
 ```
 
 ## Contributing
-Contributions are welcome! If you'd like to contribute to CVEHunter, please follow the guidelines outlined in our Contributing Guide.
+Contributions are welcome! If you'd like to contribute to CVEHunter, please follow the guidelines outlined in the Contributing Guide.
 
 ## License
 This project is licensed under the MIT License.
