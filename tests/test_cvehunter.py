@@ -60,5 +60,5 @@ async def test_cwe_wrong():
     password = os.environ.get("OPENCVE_PASSWORD")
     ch = await cvehunter.connect(username, password)
     
-    cwe = await ch.search_cwe("CWE-99999")
+    cwe = await ch.search_cwe("CWE-99989")
     assert cwe is None
