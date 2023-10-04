@@ -1,6 +1,4 @@
-# cvehunter.py
-
-from .Auth import Auth  # Import the Auth class here
+from .Auth import Auth 
 from .Cve import Cve
 from .Cvss import Cvss
 from .Cwe import Cwe
@@ -8,8 +6,8 @@ from . import utils as u
 import json
 
 async def connect(username, password, proxy: dict = None):
-    print(proxy)
     auth = Auth(username, password, proxy)
+    await auth.check_connection()  # Check if the connection is successful
     return CveHunter(auth)
 
 class CveHunter:
@@ -29,23 +27,40 @@ class CveHunter:
         cve = Cve()
         cve.cve_id = json_data.get("id")
         cve.cwe_id = json_data.get("cwes")
+        cve.summary = json_data.get("summary")
 
         if json_data.get("raw_nvd_data") is not None:
+            references = json_data["raw_nvd_data"]["cve"]["references"].get("reference_data")
+
+            cve.references = [reference["url"] for reference in references]
+            
             # Check if impact exists
+            
+            
             if json_data["raw_nvd_data"]["impact"]:
                 # Check if cvss v2 exists
                 if json_data["raw_nvd_data"]["impact"].get("baseMetricV2") is not None:
                     cve.cvss_v2 = Cvss()
-                    cve.cvss_v2.version = json_data["raw_nvd_data"]["impact"]["baseMetricV2"]["cvssV2"].get("version")
+                    cve.cvss_v2.version = float(json_data["raw_nvd_data"]["impact"]["baseMetricV2"]["cvssV2"].get("version"))
                     cve.cvss_v2.score = json_data["raw_nvd_data"]["impact"]["baseMetricV2"]["cvssV2"].get("baseScore")
-                    # ... (continue setting Cvss attributes)
+                    cve.cvss_v2.vector = json_data["raw_nvd_data"]["impact"]["baseMetricV2"]["cvssV2"].get("vectorString")
+                    cve.cvss_v2.severity = json_data["raw_nvd_data"]["impact"]["baseMetricV2"]["cvssV2"].get("baseSeverity")
+                    
+                    cve.cvss_v2.impact = json_data["raw_nvd_data"]["impact"]["baseMetricV2"].get("impactScore")
+                    cve.cvss_v2.exploitability = json_data["raw_nvd_data"]["impact"]["baseMetricV2"].get("exploitabilityScore")
+                   
                     
                 # Check if cvss v3 exists
                 if json_data["raw_nvd_data"]["impact"].get("baseMetricV3") is not None:
                     cve.cvss_v3 = Cvss()
-                    cve.cvss_v3.version = json_data["raw_nvd_data"]["impact"]["baseMetricV3"]["cvssV3"].get("version")
+                    cve.cvss_v3.version = float(json_data["raw_nvd_data"]["impact"]["baseMetricV3"]["cvssV3"].get("version"))
                     cve.cvss_v3.score = json_data["raw_nvd_data"]["impact"]["baseMetricV3"]["cvssV3"].get("baseScore")
-                    # ... (continue setting Cvss attributes)
+                    cve.cvss_v3.vector = json_data["raw_nvd_data"]["impact"]["baseMetricV3"]["cvssV3"].get("vectorString")
+                    cve.cvss_v3.severity = json_data["raw_nvd_data"]["impact"]["baseMetricV3"]["cvssV3"].get("baseSeverity")
+                    
+                    cve.cvss_v3.impact = json_data["raw_nvd_data"]["impact"]["baseMetricV3"].get("impactScore")
+                    cve.cvss_v3.exploitability = json_data["raw_nvd_data"]["impact"]["baseMetricV3"].get("exploitabilityScore")
+                   
         
         cve.published_date = json_data.get("created_at")
         cve.updated_date = json_data.get("updated_at")
