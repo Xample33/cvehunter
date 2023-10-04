@@ -4,6 +4,8 @@ class Cve:
     def __init__(self):
         self.cve_id: str = None
         self.cwe_id: str = None
+        self.summary: str = None
+        self.references: list = None
         
         self.cvss_v2: Cvss = None
         self.cvss_v3: Cvss = None
