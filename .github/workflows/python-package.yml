@@ -7,22 +7,10 @@ on:
     branches: [ "main" ]
 
 jobs:
-  clear_cache:
-    name: Clear Cache
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Clear Cache
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.cache  # Specify the path to the cache directory you want to clear
-        key: ${{ runner.os }}-clear-cache 
-
   test_3-9:
     name: Test on ${{ matrix.os }} with Python 3.9
     runs-on: ${{ matrix.os }}
-    needs: clear_cache
+
     env:
       OPENCVE_USERNAME: ${{ secrets.OPENCVE_USERNAME }}
       OPENCVE_PASSWORD: ${{ secrets.OPENCVE_PASSWORD }}
@@ -53,12 +41,12 @@ jobs:
         
     - name: Test with pytest
       run: |
-        python -m pytest
+        pytest
 
   test_3-10:
     name: Test on ${{ matrix.os }} with Python 3.10
     runs-on: ${{ matrix.os }}
-    needs: clear_cache
+
     env:
       OPENCVE_USERNAME: ${{ secrets.OPENCVE_USERNAME }}
       OPENCVE_PASSWORD: ${{ secrets.OPENCVE_PASSWORD }}
@@ -89,12 +77,12 @@ jobs:
         
     - name: Test with pytest
       run: |
-        python -m pytest
+        pytest
 
   test_3-11:
     name: Test on ${{ matrix.os }} with Python 3.11
     runs-on: ${{ matrix.os }}
-    needs: clear_cache
+
     env:
       OPENCVE_USERNAME: ${{ secrets.OPENCVE_USERNAME }}
       OPENCVE_PASSWORD: ${{ secrets.OPENCVE_PASSWORD }}
@@ -125,4 +113,4 @@ jobs:
         
     - name: Test with pytest
       run: |
-        python -m pytest
+        pytest
