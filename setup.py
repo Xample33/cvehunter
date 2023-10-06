@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name="cvehunter",
-    version="1.0.0",
+    version="1.0.2",
     author="Xample33",
     license="MIT",
     url="https://github.com/Xample33/cvehunter",
@@ -16,5 +16,5 @@ setup(
         "httpx",
         "urllib3",
     ],
-    python_requires='>=3.9, <4',
+    python_requires='>=3.9',
 )

@@ -22,18 +22,18 @@ pip3 install cvehunter
 Code:
 ```python
 import asyncio
-import cvehunter
+from cvehunter import cvehunter
     
-async def sample_cwe():
-    auth = cvehunter.Auth("USERNAME", "PASSWORD")
-    
-    cve = await auth.search_cve("CVE-2023-41991")
+async def sample():
+    ch = await cvehunter.connect(username, password)
+
+    cve = await ch.search_cve("CVE-2023-41991")
     print(cve)
     
-    cwe = await auth.search_cwe("CWE-79")
+    cwe = await ch.search_cwe("CWE-79")
     print(cwe)
     
-asyncio.run(sample_cwe())
+asyncio.run(sample())
 ```
 
 Output:
