@@ -16,4 +16,5 @@ setup(
         "httpx",
         "urllib3",
     ],
+    python_requires='>=3.9, <4',
 )
