@@ -5,7 +5,8 @@
 <h1 align="center"> CVEHunter - Async python package for CVE/CWE data</h1>
 
 <p align="center"> 
-  <a href="https://pypi.org/project/xxx/"><img alt="PyPI" src="https://img.shields.io/pypi/v/xxx"></a>
+  <a href="https://badge.fury.io/py/cvehunter"><img src="https://badge.fury.io/py/cvehunter.svg" alt="PyPI"></a>
+  <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/cvehunter">
   <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 
