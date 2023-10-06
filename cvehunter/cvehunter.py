@@ -25,6 +25,7 @@ class CveHunter:
         json_data = json.loads(raw_data)
         
         cve = Cve()
+        cve.raw = raw_data
         cve.cve_id = json_data.get("id")
         cve.cwe_id = json_data.get("cwes")
         cve.summary = json_data.get("summary")
@@ -85,3 +86,33 @@ class CveHunter:
         cwe.description = json_data.get("description")
         
         return cwe
+    
+    async def get_latest_cves(self, page: int = 1) -> list[Cve]:
+        """
+        Get the latest CVEs, 20 per page
+        
+        page: The page number to get the CVEs from
+        """
+        
+        u.check_latest_cves_integrity(page)
+        
+        api_url = f"https://www.opencve.io/api/cve?page={page}"
+        raw_data = await self.auth.make_request(api_url)
+        
+        if raw_data is None:
+            return None
+        
+        json_data = json.loads(raw_data)
+        
+        cves = []
+        
+        for element in json_data:
+            single_cve = Cve()
+            single_cve.cve_id = element["id"]
+            single_cve.summary = element["summary"]
+            single_cve.published_date = element["created_at"]
+            single_cve.updated_date = element["updated_at"]
+            
+            cves.append(single_cve)
+            
+        return cves

@@ -42,3 +42,10 @@ def check_credentials_integrity(username: str, password: str):
     
     if not isinstance(password, str):
         raise TypeError("Password must be a string")
+    
+def check_latest_cves_integrity(page: int) -> None:
+    if not isinstance(page, int):
+        raise TypeError("Page must be an integer")
+    
+    if page < 1:
+        raise ValueError("Page must be greater than 0")

@@ -2,6 +2,7 @@ from .Cvss import Cvss
 
 class Cve:
     def __init__(self):
+        self.raw: str = None
         self.cve_id: str = None
         self.cwe_id: str = None
         self.summary: str = None
