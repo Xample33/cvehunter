@@ -1,5 +1,6 @@
 import httpx
-from httpx import ConnectTimeout, HTTPStatusError
+from httpx import ConnectTimeout
+from httpx._exceptions import ConnectTimeout, HTTPError
 
 class Auth:
     def __init__(self, username: str, password: str, proxy: dict = None):
@@ -32,8 +33,8 @@ class Auth:
             return
         elif response.status_code == 401:
             raise ValueError("Invalid credentials")
-        else:
-            raise HTTPStatusError(f"Error {response.status_code} while retrieving data from {api_url}")
+        elif response.status_code == 429:
+            raise HTTPError("Too many requests, max 250/hour")
 
     async def make_request(self, api_url: str) -> str:
         client = await self.get_client()
