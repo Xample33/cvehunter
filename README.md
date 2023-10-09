@@ -2,7 +2,7 @@
   <img height=300 src="https://raw.githubusercontent.com/Xample33/cvehunter/development/images/cvehunter_logo.png" alt='cvehunter_logo'></a>
 </p>
 
-<h1 align="center"> CVEHunter - Async python package for CVE/CPE data</h1>
+<h1 align="center"> CVEHunter - Async python wrapper for CVE/CPE data</h1>
 
 <p align="center"> 
   <a href="https://badge.fury.io/py/cvehunter"><img src="https://badge.fury.io/py/cvehunter.svg" alt="PyPI"></a>
