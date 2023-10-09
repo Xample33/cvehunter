@@ -13,7 +13,7 @@ setup(
     url="https://github.com/Xample33/cvehunter",
     description="Python wrapper for the NVD API",
     long_description=read('README.md'),
-    long_description_content_type='text/markdown',  # Specify the content type as Markdown
+    long_description_content_type='text/markdown',
     install_requires=[
         "httpx",
         "urllib3",
