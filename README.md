@@ -1,16 +1,15 @@
 <p align="center">
-  <img height=300 src="https://github.com/Xample33/cve-hunter/assets/54323615/f8654f5c-d7ce-4929-b5f7-3d9bd3c78c94" alt='cvehunter'></a>
+  <img height=300 src="https://raw.githubusercontent.com/Xample33/cvehunter/development/images/cvehunter_logo.png" alt='cvehunter_logo'></a>
 </p>
 
-<h1 align="center"> CVEHunter - Async python package for CVE/CWE data</h1>
+<h1 align="center"> CVEHunter - Async python package for CVE/CPE data</h1>
 
 <p align="center"> 
   <a href="https://badge.fury.io/py/cvehunter"><img src="https://badge.fury.io/py/cvehunter.svg" alt="PyPI"></a>
   <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/cvehunter">
-  <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 
-CVEHunter is a Python asynchronous library designed to simplify the retrieval of CVE (Common Vulnerabilities and Exposures) and CWE (Common Weakness Enumeration) information using the OpenCVE API. It streamlines the process of searching for and accessing valuable security data for vulnerability assessment and management.
+CVEHunter is a Python asynchronous library designed to simplify the retrieval of CVE (Common Vulnerabilities and Exposures) and CPE (Common Platform Enumeration) information using the NVD API. It streamlines the process of searching for and accessing valuable security data for vulnerability assessment and management.
 
 ## Installation
 
@@ -22,25 +21,29 @@ pip3 install cvehunter
 Code:
 ```python
 import asyncio
-from cvehunter import cvehunter
-    
-async def sample():
-    ch = await cvehunter.connect(username, password)
+from cvehunter import CveHunter
 
-    cve = await ch.search_cve("CVE-2023-41991")
-    print(cve)
+async def test() -> None:
+    ch = CveHunter()
     
-    cwe = await ch.search_cwe("CWE-79")
-    print(cwe)
+    cve = await ch.search_by_cve("CVE-2023-41991")
     
-asyncio.run(sample())
+    print(cve.cve_id)
+    print(cve.cwe_id)
+    print(cve.description)
+    print(cve.cvss_v3)
+    print(cve.references)
+    
+asyncio.run(test())
 ```
 
 Output:
 ```
-{'cve_id': 'CVE-2023-41991', 'cwe_id': [], 'cvss_v2': None, 'cvss_v3': None, 'published_date': '2023-09-21T19:15:00Z', 'last_modified_date': '2023-09-23T03:15:00Z'}
-
-{'cwe_id': 'CWE-79', 'name': "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')", 'description': 'The software does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.'}
+CVE-2023-41991
+CWE-295
+A certificate validation issue was addressed. This issue is fixed in macOS Ventura 13.6, iOS 16.7 and iPadOS 16.7. A malicious app may be able to bypass signature validation. Apple is aware of a report that this issue may have been actively exploited against versions of iOS before iOS 16.7.
+{'score': 5.5, 'vector': 'CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N', 'severity': 'MEDIUM', 'version': 3.1, 'exploitability': 1.8, 'impact': 3.6}
+['http://seclists.org/fulldisclosure/2023/Oct/5', 'https://support.apple.com/en-us/HT213927', 'https://support.apple.com/en-us/HT213931']
 ```
 
 ## Contributing
