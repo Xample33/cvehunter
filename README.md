@@ -4,11 +4,11 @@
 
 <h1 align="center"> CVEHunter - Async python wrapper for CVE/CPE data</h1>
 
-<p align="center"> 
-  <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/cvehunter">
-  <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/cvehunter">
-  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/cvehunter">
-  <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FXample33%2Fcvehunter&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"> </a>
+<p align="center">  
+  <a href="https://pypi.org/project/cvehunter"> <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/cvehunter"> </a>
+  <a href="https://pypi.org/project/cvehunter"> <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/cvehunter"> </a>
+  <a href="https://pypi.org/project/cvehunter"> <img alt="PyPI - Downloads" src="https://badgen.net/pypi/dm/cvehunter"> </a>
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FXample33%2Fcvehunter&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false">
 </p>
 
 CVEHunter is a Python asynchronous library designed to simplify the retrieval of CVE (Common Vulnerabilities and Exposures) and CPE (Common Platform Enumeration) information using the NVD API. It streamlines the process of searching for and accessing valuable security data for vulnerability assessment and management.
