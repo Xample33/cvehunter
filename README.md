@@ -48,9 +48,14 @@ A certificate validation issue was addressed. This issue is fixed in macOS Ventu
 ['http://seclists.org/fulldisclosure/2023/Oct/5', 'https://support.apple.com/en-us/HT213927', 'https://support.apple.com/en-us/HT213931']
 ```
 
+## Documentation
+The documentation is hosted on readthedocs, check it <a href="https://cvehunter-Docs.readthedocs.io/"> here </a>
+
+
 ## TODO
 - [ ] Change history
 - [ ] Better filters
+
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to CVEHunter, please follow the guidelines outlined in the Contributing Guide.
