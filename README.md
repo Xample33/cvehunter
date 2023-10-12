@@ -5,6 +5,7 @@
 <h1 align="center"> CVEHunter - Async python wrapper for CVE/CPE data</h1>
 
 <p align="center">  
+  <a href="https://github.com/astral-sh/ruff"> <img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json"> </a>
   <a href="https://pypi.org/project/cvehunter"> <img alt="PyPI - Version" src="https://badgen.net/pypi/v/cvehunter"> </a>
   <a href="https://pypi.org/project/cvehunter"> <img alt="PyPI - Python Version" src="https://badgen.net/pypi/python/cvehunter"> </a>
   <a href="https://pypi.org/project/cvehunter"> <img alt="PyPI - Downloads" src="https://badgen.net/pypi/dm/cvehunter"> </a>
