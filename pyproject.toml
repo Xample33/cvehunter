@@ -34,7 +34,7 @@ exclude = [
     "venv",
     "testing.py"
 ]
-per-file-ignores = {}
+per-file-ignores = {"__init__.py" = ["F401"]}
 
 # Same as Black.
 line-length = 100
