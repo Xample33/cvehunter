@@ -16,4 +16,4 @@ class Cvss:
 
     def __repr__(self) -> str:
         # Return a string representation that can recreate the object
-        return(str(vars(self)))
+        return (str(vars(self)))

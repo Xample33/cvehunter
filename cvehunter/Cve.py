@@ -18,4 +18,4 @@ class Cve:
 
     def __repr__(self):
         # Return a string representation that can recreate the object
-        return(str(vars(self)))
+        return (str(vars(self)))

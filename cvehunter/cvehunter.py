@@ -7,7 +7,7 @@ from .cvss import Cvss
 
 
 class CveHunter:
-    #init method to pass proxy to Connect class:
+    # init method to pass proxy to Connect class:
     def __init__(self, proxy: dict = None) -> None:
         self.proxy = proxy
 

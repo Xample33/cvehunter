@@ -14,11 +14,11 @@ def check_cve_integrity(cve_id: str) -> None:
     if not cve_id[4:8].isdigit():
         raise ValueError("CVE ID must be in the format CVE-YYYY-NNNN")
 
-    #check if the first part of the cve is only charters and a date
+    # Check if the first part of the cve is only charters and a date
     if not cve_id[9:].isdigit():
         raise ValueError("CVE ID must be in the format CVE-YYYY-NNNN")
 
-    #check cve year
+    # Check cve year
     cve_year = int(cve_id.split("-")[1])
     current_year = int(datetime.now().year)
     if cve_year > current_year:
@@ -77,6 +77,8 @@ def check_vector_integrity(vector: str) -> None:
         raise TypeError("Vector must be a string")
 
 def check_cwe_integrity(cwe_id: str) -> None:
+    max_len = 7
+
     if not isinstance(cwe_id, str):
         raise TypeError("CWE ID must be a string")
 
@@ -86,7 +88,7 @@ def check_cwe_integrity(cwe_id: str) -> None:
     if not cwe_id[4:].isdigit():
         raise ValueError("CWE ID must be in the format CWE-NNN")
 
-    if len(cwe_id) > 7:
+    if len(cwe_id) > max_len:
         raise ValueError("CWE ID must be in the format CWE-NNN")
 
 def check_date_integrity(date: str) -> None:

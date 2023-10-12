@@ -18,6 +18,9 @@ class Connect:
         return self.client
 
     async def make_request(self, api_url: str) -> str:
+        status_unauthorized = 401
+        stuatus_notfound = 404
+
         client = await self.get_client()
         try:
             response = await client.get(api_url)
@@ -28,10 +31,10 @@ class Connect:
         except ConnectError as conn_err:
             raise ConnectError(conn_err)
 
-        if response.status_code == 401:
+        if response.status_code == status_unauthorized:
             raise ValueError("Invalid credentials")
 
-        if response.status_code == 404 and 'NVD Web Services Endpoint' not in response.text:
+        if response.status_code == stuatus_notfound and 'NVD Web Services Endpoint' not in response.text:
             raise ValueError("Invalid data provided")
 
         if '"totalResults": 0' in response.text:
