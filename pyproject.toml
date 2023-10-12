@@ -34,7 +34,7 @@ exclude = [
     "venv",
     "testing.py"
 ]
-per-file-ignores = {"__init__.py" = ["F401"]}
+per-file-ignores = {"__init__.py" = ["F401"], "test_cvehunter.py" = ["T201", "S101"]}
 
 # Same as Black.
 line-length = 100
