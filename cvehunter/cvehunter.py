@@ -10,6 +10,15 @@ class CveHunter:
         self.proxy = proxy
         
     async def check_connection(self) -> bool:
+        """
+        Check if the connection to the NVD API is working.
+        
+        Returns:
+            True if the connection is working, False otherwise.
+            
+        Example:
+            >>> print(await check_connection())
+        """	
         api_url = "https://services.nvd.nist.gov/rest/json/cves/"
         raw_data = await Connect(self.proxy).make_request(api_url)
         
@@ -19,6 +28,18 @@ class CveHunter:
         return True
     
     async def search_by_cve(self, cve_id: str) -> Cve:
+        """
+        Obtain information about from a CVE ID.
+
+        Args:
+            cve_id: The CVE ID to search for CVEs.
+            
+        Returns:
+            Cve: A Cve object containing the CVE information.
+            
+        Example:
+            >>> cve = await search_by_cve('CVE-2023-41991')
+        """
         u.check_cve_integrity(cve_id)
         
         api_url = f"https://services.nvd.nist.gov/rest/json/cves/2.0?cveId={cve_id}"
