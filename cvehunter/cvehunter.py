@@ -1,7 +1,7 @@
 import json
 
 from . import utils as u
-from .connect import Connect
+from .Connect import Connect
 from .cve import Cve
 from .cvss import Cvss
 
