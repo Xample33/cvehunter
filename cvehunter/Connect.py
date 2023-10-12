@@ -1,6 +1,6 @@
 import httpx
-from httpx import ConnectTimeout
-from httpx._exceptions import ConnectTimeout, HTTPError, ProxyError, ConnectError
+from httpx._exceptions import ConnectError, ConnectTimeout, ProxyError
+
 
 class Connect:
     def __init__(self, proxy: dict = None) -> None:
@@ -13,10 +13,10 @@ class Connect:
             # Create a new client or recreate it if it's closed
             self.client = httpx.AsyncClient(
                 timeout=self.timeout,
-                proxies=self.proxy
+                proxies=self.proxy,
             )
         return self.client
-    
+
     async def make_request(self, api_url: str) -> str:
         client = await self.get_client()
         try:
@@ -30,13 +30,13 @@ class Connect:
 
         if response.status_code == 401:
             raise ValueError("Invalid credentials")
-        
+
         if response.status_code == 404 and 'NVD Web Services Endpoint' not in response.text:
             raise ValueError("Invalid data provided")
 
         if '"totalResults": 0' in response.text:
             return None
-        
+
         await self.close_connection()
         return response.text
 
