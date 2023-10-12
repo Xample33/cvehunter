@@ -1,5 +1,4 @@
 import pytest
-import os
 from cvehunter import CveHunter
 
 @pytest.mark.asyncio
