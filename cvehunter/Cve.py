@@ -1,5 +1,6 @@
 from .cvss import Cvss
 
+
 class Cve:
     def __init__(self):
         self.raw: str = None
