@@ -1,4 +1,4 @@
-from .cvss import Cvss
+from .Cvss import Cvss
 
 
 class Cve:

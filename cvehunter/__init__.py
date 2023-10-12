@@ -1,2 +1,2 @@
 from cvehunter.cvehunter import CveHunter
-from cvehunter.cvss import Cvss
+from cvehunter.Cvss import Cvss
