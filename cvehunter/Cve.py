@@ -1,5 +1,4 @@
-from .Cvss import Cvss
-
+from .cvss import Cvss
 
 class Cve:
     def __init__(self):

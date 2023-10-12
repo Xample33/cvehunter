@@ -1,9 +1,9 @@
 import json
 
 from . import utils as u
-from .Connect import Connect
-from .Cve import Cve
-from .Cvss import Cvss
+from .connect import Connect
+from .cve import Cve
+from .cvss import Cvss
 
 
 class CveHunter:
