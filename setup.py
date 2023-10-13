@@ -12,7 +12,7 @@ setup(
     maintainer="Xample33",
     license="MIT",
     url="https://github.com/Xample33/cvehunter",
-    description="Python wrapper for the NVD API",
+    description="Asynchronous python wrapper for the NVD API",
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     install_requires=[
