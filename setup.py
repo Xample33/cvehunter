@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name="cvehunter",
-    version="1.0.5",
+    version="1.0.6",
     packages=["cvehunter"],
     author="Xample33",
     maintainer="Xample33",
