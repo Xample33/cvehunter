@@ -65,3 +65,5 @@ Contributions are welcome! If you'd like to contribute to CVEHunter, please foll
 ## License
 This project is licensed under the MIT License.
 
+
+> ☆ If you like the project, please leave a star, is free!
